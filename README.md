@@ -23,18 +23,18 @@ pip install lxml
 
 ---
 
-## Definitions
-
-* **Search mode**: Enter `i` for scraping images and `v` for scraping videos .
-* **Number of search terms**: For example, if you want to search for *drone single person*, enter `3`.
-* **Search term**: Keyword(s) for searching on Shutterstock.
-* **Number of pages to scrape**: Higher number of pages means greater quantity of content with lower keyword precision.
-
----
-
 ## Running
 Open terminal in the directory of **shutterscrape.py** and enter:
 ```
 python shutterscrape.py
 ```
 Go grab a cup of coffee while waiting... oh wait, it's already done!
+
+---
+
+## Definitions
+
+* **Search mode**: Enter `i` for scraping images and `v` for scraping videos .
+* **Number of search terms**: For example, if you want to search for *drone single person*, enter `3`.
+* **Search term**: Keyword(s) for searching on Shutterstock.
+* **Number of pages to scrape**: Higher number of pages means greater quantity of content with lower keyword precision.
