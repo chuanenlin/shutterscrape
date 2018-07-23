@@ -48,25 +48,36 @@ if searchMode == "v":
             url = "https://www.shutterstock.com/video/search/" + searchTerm + "?page=" + str(i)
             driver.get(url)
             print("Page " + str(i))
-            for i in range (0, 50):
-                container = driver.find_elements_by_xpath("//div[@data-automation='VideoGrid_video_videoClipPreview_" + str(i) + "']")
+            for j in range (0, 50):
+                while True:
+                    container = driver.find_elements_by_xpath("//div[@data-automation='VideoGrid_video_videoClipPreview_" + str(j) + "']")
+                    if len(container) != 0:
+                        break
+                    time.sleep(10)
+                    driver.get(url)
                 container[0].click()
-                wait = WebDriverWait(driver, 10).until(ec.visibility_of_element_located((By.XPATH, "//video[@data-automation='VideoPlayer_video_video']")))
-                data = driver.execute_script("return document.documentElement.outerHTML")
-                scraper = BeautifulSoup(data, "lxml")
-                video_container = scraper.find_all("video", {"data-automation":"VideoPlayer_video_video"})
+                while True:
+                    wait = WebDriverWait(driver, 60).until(ec.visibility_of_element_located((By.XPATH, "//video[@data-automation='VideoPlayer_video_video']")))
+                    video_url = driver.current_url
+                    data = driver.execute_script("return document.documentElement.outerHTML")
+                    scraper = BeautifulSoup(data, "lxml")
+                    video_container = scraper.find_all("video", {"data-automation":"VideoPlayer_video_video"})
+                    if len(video_container) != 0:
+                        break
+                    time.sleep(10)
+                    driver.get(video_url)
                 video_array = video_container[0].find_all("source")
                 video_src = video_array[1].get("src")
                 name = video_src.rsplit("/", 1)[-1]
                 try:
                     urlretrieve(video_src, os.path.join(scrape_directory, os.path.basename(video_src)))
-                    print('Scraped ' + name)
+                    print("Scraped " + name)
                 except Exception as e:
-                    print(str(e))
+                    print(e)
                 driver.get(url)
         driver.close()
     except Exception as e:
-        print(str(e))
+        print(e)
 
 if searchMode == "i":
     try:
@@ -87,7 +98,7 @@ if searchMode == "i":
                     urlretrieve(img_src, os.path.join(scrape_directory, os.path.basename(img_src)))
                     print('Scraped ' + name)
                 except Exception as e:
-                    print(str(e))
+                    print(e)
         driver.close()
     except Exception as e:
-        print(str(e))
+        print(e)
