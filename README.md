@@ -17,7 +17,7 @@ pip install lxml
 
 2. Install [chrome driver](https://sites.google.com/a/chromium.org/chromedriver/downloads).
 
-3. In **shutterscrape.py**, change `C:/Users/[username]/[path]` in line 11 to the local path for saving your scraped files.
+3. In **shutterscrape.py**, change `C:/Users/[username]/[path]` in line 77 to the local path for saving your scraped files.
 
 4. *(Optional)* [Configure environment variables paths](https://www.java.com/en/download/help/path.xml) for **python.exe** and **chromedriver.exe**.
 
