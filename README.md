@@ -24,6 +24,7 @@ pip install lxml
 ---
 
 ## Running
+
 Open terminal in the directory of **shutterscrape.py** and enter:
 ```
 python shutterscrape.py
@@ -38,3 +39,13 @@ Go grab a cup of coffee while waiting... oh wait, it's already done!
 * **Number of search terms**: For example, if you want to search for *drone single person*, enter `3`.
 * **Search term**: Keyword(s) for searching on Shutterstock.
 * **Number of pages to scrape**: Higher number of pages means greater quantity of content with lower keyword precision.
+
+---
+
+## Updates
+
+**07/25/2018**</br>
+Added **gettyscrape.py** for scraping videos from [Getty Images](https://www.gettyimages.com/footage/).
+
+**07/23/2018**</br>
+Stability fixes.
