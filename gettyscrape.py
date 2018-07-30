@@ -24,9 +24,6 @@ def videoscrape():
             for j in range (0, 100):
                 while True:
                     container = driver.find_elements_by_xpath("//article[@gi-asset='" + str(j) + "']")
-                    section = container[0].find_element_by_xpath(".//section[@class='image-section']")
-                    link = section.find_element_by_xpath(".//a[@class='search-result-asset-link']")
-                    video_url = link.get_attribute("href")
                     if len(container) != 0:
                         break
                     if len(driver.find_elements_by_xpath("//article[@gi-asset='" + str(j + 1) + "']")) == 0 and i == searchPage:
@@ -34,9 +31,13 @@ def videoscrape():
                         return
                     time.sleep(10)
                     driver.get(url)
-                driver.get(video_url)
+                    print(str(j)) 
+		section = container[0].find_element_by_xpath(".//section[@class='image-section']")
+                link = section.find_element_by_xpath(".//a[@class='search-result-asset-link']")
+                video_url = link.get_attribute("href")                
+		driver.get(video_url)
                 while True:
-                    wait = WebDriverWait(driver, 60).until(ec.visibility_of_element_located((By.XPATH, "//video[@autoplay='true']")))
+                    wait = WebDriverWait(driver, 30).until(ec.visibility_of_element_located((By.XPATH, "//video[@autoplay='true']")))
                     data = driver.execute_script("return document.documentElement.outerHTML")
                     scraper = BeautifulSoup(data, "lxml")
                     video_container = scraper.find_all("video", {"autoplay":"true"})
@@ -55,7 +56,7 @@ def videoscrape():
     except Exception as e:
         print(e)
 
-print("GettyScrape v1.0")
+print("GettyScrape v1.1")
 
 scrape_directory = "C:/Users/[username]/[path]"
 
