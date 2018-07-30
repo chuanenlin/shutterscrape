@@ -44,6 +44,9 @@ Go grab a cup of coffee while waiting... oh wait, it's already done!
 
 ## Updates
 
+**07/31/2018**</br>
+More stability fixes.
+
 **07/25/2018**</br>
 Added **gettyscrape.py** for scraping videos from [Getty Images](https://www.gettyimages.com/footage/).
 
