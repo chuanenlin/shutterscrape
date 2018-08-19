@@ -7,11 +7,10 @@ It implements [Selenium](https://www.seleniumhq.org/) for browser automation and
 
 ## Setting up
 
-1. Install [Python 2.7](https://www.python.org/downloads/release/python-2714/)
+1. Install [Python 2.7](https://www.python.org/downloads/release/python-2714/).
 
 2. Open terminal and enter the following lines:
 ```
-cd C:\Python27\Scripts
 pip install beautifulsoup4
 pip install selenium
 pip install lxml
