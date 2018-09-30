@@ -1,6 +1,6 @@
 # ShutterScrape
 
-ShutterScrape is a web scrapper for batch fetching images or videos from [Shutterstock](https://www.shutterstock.com/) with blinding speed. ⚡</br>
+ShutterScrape is a web scrapper for bulk downloading images or videos from [Shutterstock](https://www.shutterstock.com/) with blinding speed. ⚡</br>
 It implements [Selenium](https://www.seleniumhq.org/) for browser automation and [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) for parsing.
 
 If you like this repo, feel free to star ⭐ it!
