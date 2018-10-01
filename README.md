@@ -3,15 +3,16 @@
 ShutterScrape is a web scrapper for bulk downloading images or videos from [Shutterstock](https://www.shutterstock.com/) with blinding speed. ⚡</br>
 It implements [Selenium](https://www.seleniumhq.org/) for browser automation and [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) for parsing.
 
+If you like this repo, feel free to star ⭐ it!
+
 ---
 
 ## Setting up
 
-1. Install [Python 2.7](https://www.python.org/downloads/release/python-2714/)
+1. Install [Python 2.7](https://www.python.org/downloads/release/python-2714/).
 
 2. Open terminal and enter the following lines:
 ```
-cd C:\Python27\Scripts
 pip install beautifulsoup4
 pip install selenium
 pip install lxml
