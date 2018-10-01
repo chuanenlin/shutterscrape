@@ -5,10 +5,7 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from urllib import urlretrieve
 import os
-<<<<<<< HEAD
 import Tkinter, Tkconstants, tkFileDialog
-=======
->>>>>>> 95de4f1008ed94696206795b09048f9322fdc321
 import time
 
 def videoscrape():
@@ -35,17 +32,10 @@ def videoscrape():
                         return
                     time.sleep(10)
                     driver.get(url)
-<<<<<<< HEAD
                     print(str(j))
 		section = container[0].find_element_by_xpath(".//section[@class='image-section']")
                 link = section.find_element_by_xpath(".//a[@class='search-result-asset-link']")
                 video_url = link.get_attribute("href")
-=======
-                    print(str(j)) 
-		section = container[0].find_element_by_xpath(".//section[@class='image-section']")
-                link = section.find_element_by_xpath(".//a[@class='search-result-asset-link']")
-                video_url = link.get_attribute("href")                
->>>>>>> 95de4f1008ed94696206795b09048f9322fdc321
 		driver.get(video_url)
                 while True:
                     wait = WebDriverWait(driver, 30).until(ec.visibility_of_element_located((By.XPATH, "//video[@autoplay='true']")))
@@ -73,7 +63,6 @@ scrape_directory = "C:/Users/[username]/[path]"
 
 while True:
     while True:
-<<<<<<< HEAD
         print("Please select a directory to save your scraped files.")
         scrape_directory = tkFileDialog.askdirectory()
         if scrape_directory == None or scrape_directory == "":
@@ -81,8 +70,6 @@ while True:
             continue
         break
     while True:
-=======
->>>>>>> 95de4f1008ed94696206795b09048f9322fdc321
         searchCount = input("Number of search terms: ")
         if searchCount < 1:
             print("You must have at least one search term.")
