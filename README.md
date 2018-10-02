@@ -4,6 +4,7 @@ ShutterScrape is a web scrapper for bulk downloading images or videos from [Shut
 It implements [Selenium](https://www.seleniumhq.org/) for browser automation and [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) for parsing.
 
 If you like this repo, feel free to star ⭐ it!
+For more information, contact https://davidlin.io/.
 
 ---
 
