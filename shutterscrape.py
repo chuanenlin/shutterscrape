@@ -59,7 +59,7 @@ def imagescrape():
             data = driver.execute_script("return document.documentElement.outerHTML")
             print("Page " + str(i))
             scraper = BeautifulSoup(data, "lxml")
-            img_container = scraper.find_all("div", {"class":"img-wrap"})
+            img_container = scraper.find_all("div", {"class":"z_c_b"})
             for j in range(0, len(img_container)-1):
                 img_array = img_container[j].find_all("img")
                 img_src = img_array[0].get("src")
