@@ -59,10 +59,9 @@ def imagescrape():
             data = driver.execute_script("return document.documentElement.outerHTML")
             print("Page " + str(i))
             scraper = BeautifulSoup(data, "lxml")
-            img_container = scraper.find_all("div", {"class":"z_c_b"})
+            img_container = scraper.find_all("img", {"class":"z_e_h"})
             for j in range(0, len(img_container)-1):
-                img_array = img_container[j].find_all("img")
-                img_src = img_array[0].get("src")
+                img_src = img_container[j].get("src")
                 name = img_src.rsplit("/", 1)[-1]
                 try:
                     urlretrieve(img_src, os.path.join(scrape_directory, os.path.basename(img_src)))
