@@ -7,6 +7,9 @@ from urllib import urlretrieve
 import os
 import Tkinter, Tkconstants, tkFileDialog
 import time
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
 
 def videoscrape():
     try:
