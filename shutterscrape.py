@@ -1,13 +1,33 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from urllib import urlretrieve
 import os
-import Tkinter, Tkconstants, tkFileDialog
 import time
 import ssl
+
+# For python2
+from urllib import urlretrieve
+import Tkinter, Tkconstants, tkFileDialog
+
+def askDialog():
+   return tkFileDialog.askdirectory()
+
+def inp(text):
+   return raw_input(text)
+
+# For python3
+# from urllib.request import urlretrieve
+# import tkinter, tkinter.constants, tkinter.filedialog
+
+# def askDialog():
+#     return tkinter.filedialog.askdirectory()
+
+# def inp(text):
+#     return input(text)
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
@@ -54,10 +74,12 @@ def videoscrape():
 
 def imagescrape():
     try:
-        driver = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument("--no-sandbox")
+        driver = webdriver.Chrome(chrome_options=chrome_options)
         driver.maximize_window()
         for i in range(1, searchPage + 1):
-            url = "https://www.shutterstock.com/search?searchterm=" + searchTerm + "&sort=popular&image_type=all&search_source=base_landing_page&language=en&page=" + str(i)
+            url = "https://www.shutterstock.com/search?searchterm=" + searchTerm + "&sort=popular&image_type=" + image_type + "&search_source=base_landing_page&language=en&page=" + str(i)
             driver.get(url)
             data = driver.execute_script("return document.documentElement.outerHTML")
             print("Page " + str(i))
@@ -82,35 +104,46 @@ print("ShutterScrape v1.1")
 while True:
     while True:
         print("Please select a directory to save your scraped files.")
-        scrape_directory = tkFileDialog.askdirectory()
+        scrape_directory = askDialog()
         if scrape_directory == None or scrape_directory == "":
             print("You must select a directory to save your scraped files.")
             continue
         break
     while True:
-        searchMode = raw_input("Search mode ('v' for video or 'i' for image): ")
+        searchMode = inp("Search mode ('v' for video or 'i' for image): ")
         if searchMode != "v" and searchMode != "i":
             print("You must select 'v' for video or 'i' for image.")
             continue
         break
+    if searchMode == 'i':
+        while True:
+            image_type = inp("Select image type ('a' for all or 'p' for photo): ")
+            if image_type != "a" and image_type != "p":
+                print("You must select 'a' for all or 'p' for photo.")
+                continue
+            break
+        if image_type == 'p':
+            image_type = 'photo'
+        else:
+            image_type = 'all'
     while True:
-        searchCount = input("Number of search terms: ")
+        searchCount = int(inp("Number of search terms: "))
         if searchCount < 1:
             print("You must have at least one search term.")
             continue
         elif searchCount == 1:
-            searchTerm = raw_input("Search term: ")
+            searchTerm = inp("Search term: ")
         else:
-            searchTerm = raw_input("Search term 1: ")
+            searchTerm = inp("Search term 1: ")
             for i in range (1, searchCount):
-                searchTermPart = raw_input("Search term " + str(i + 1) + ": ")
+                searchTermPart = inp("Search term " + str(i + 1) + ": ")
                 if searchMode == "v":
                     searchTerm += "-" + searchTermPart
                 if searchMode == "i":
                     searchTerm += "+" + searchTermPart
         break
     while True:
-        searchPage = input("Number of pages to scrape: ")
+        searchPage = int(input("Number of pages to scrape: "))
         if searchPage < 1:
             print("You must have scrape at least one page.")
             continue
@@ -120,7 +153,7 @@ while True:
     if searchMode == "i":
         imagescrape()
     print("Scraping complete.")
-    restartScrape = raw_input("Keep scraping? ('y' for yes or 'n' for no) ")
+    restartScrape = inp("Keep scraping? ('y' for yes or 'n' for no) ")
     if restartScrape == "n":
         print("Scraping ended.")
         break
