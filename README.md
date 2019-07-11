@@ -43,6 +43,9 @@ Go grab a cup of coffee while waiting... oh wait, it's already done!
 
 ## Updates
 
+**4/26/2019**</br>
+Updated for new shutterstock page layout as of 4/26/2019.
+
 **10/1/2018**</br>
 Added GUI for save directory selection.
 
