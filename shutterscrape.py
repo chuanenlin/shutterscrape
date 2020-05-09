@@ -84,7 +84,7 @@ def imagescrape():
             data = driver.execute_script("return document.documentElement.outerHTML")
             print("Page " + str(i))
             scraper = BeautifulSoup(data, "lxml")
-            img_container = scraper.find_all("img", {"class":"z_g_h"})
+            img_container = scraper.find_all("img", {"class":"z_h_c z_h_e"})
             for j in range(0, len(img_container)-1):
                 img_src = img_container[j].get("src")
                 name = img_src.rsplit("/", 1)[-1]
