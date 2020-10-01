@@ -1,5 +1,5 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager #use to initialize driver in a better way without having chromedriver path mentioned. 
+from webdriver_manager.chrome import ChromeDriverManager #use to initialize driver in a better way without having chromedriver path mentioned.
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -10,31 +10,31 @@ import time
 import ssl
 
 # For python2
-from urllib import urlretrieve
-import Tkinter, Tkconstants, tkFileDialog
-
-def askDialog():
-   return tkFileDialog.askdirectory()
-
-def inp(text):
-   return raw_input(text)
+# from urllib import urlretrieve
+# import Tkinter, Tkconstants, tkFileDialog
+#
+# def askDialog():
+#    return tkFileDialog.askdirectory()
+#
+# def inp(text):
+#    return raw_input(text)
 
 # For python3
-# from urllib.request import urlretrieve
-# import tkinter, tkinter.constants, tkinter.filedialog
+from urllib.request import urlretrieve
+import tkinter, tkinter.constants, tkinter.filedialog
 
-# def askDialog():
-#     return tkinter.filedialog.askdirectory()
+def askDialog():
+    return tkinter.filedialog.askdirectory()
 
-# def inp(text):
-#     return input(text)
+def inp(text):
+    return input(text)
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def videoscrape():
     try:
-        driver = webdriver.Chrome(ChromeDriverManager().install()) #This installs or finds the new version of chrome driver if not available and links to path automatically. 
+        driver = webdriver.Chrome(ChromeDriverManager().install()) #This installs or finds the new version of chrome driver if not available and links to path automatically.
         driver.maximize_window()
         for i in range(1, searchPage + 1):
             url = "https://www.shutterstock.com/video/search/" + searchTerm + "?page=" + str(i)
@@ -85,7 +85,7 @@ def imagescrape():
             data = driver.execute_script("return document.documentElement.outerHTML")
             print("Page " + str(i))
             scraper = BeautifulSoup(data, "lxml")
-            img_container = scraper.find_all("img", {"class":"z_h_c z_h_e"})
+            img_container = scraper.find_all("img", {"class":"z_h_9d80b z_h_2f2f0"})
             for j in range(0, len(img_container)-1):
                 img_src = img_container[j].get("src")
                 name = img_src.rsplit("/", 1)[-1]
@@ -98,7 +98,7 @@ def imagescrape():
     except Exception as e:
         print(e)
 
-print("ShutterScrape v1.1")
+print("ShutterScrape")
 
 #scrape_directory = "C:/Users/[username]/[path]"
 

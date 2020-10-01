@@ -7,9 +7,9 @@ It implements [Selenium](https://www.seleniumhq.org/) for browser automation and
 
 ## Setting up
 
-1. Install [Python 2.7](https://www.python.org/downloads/release/python-2714/).
+1. Configure `shutterscrape.py` to your Python version.
 
-2. Open terminal and enter the following lines:
+2. Install requirements from Terminal:
 ```
 pip install beautifulsoup4
 pip install selenium
@@ -42,6 +42,9 @@ Go grab a cup of coffee while waiting... oh wait, it's already done!
 ---
 
 ## Updates
+
+**10/1/2020**</br>
+Updated for new shutterstock page layout as of 10/1/2020.
 
 **4/26/2019**</br>
 Updated for new shutterstock page layout as of 4/26/2019.
