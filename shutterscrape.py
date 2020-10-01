@@ -1,4 +1,5 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager #use to initialize driver in a better way without having chromedriver path mentioned. 
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -33,7 +34,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def videoscrape():
     try:
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(ChromeDriverManager().install()) #This installs or finds the new version of chrome driver if not available and links to path automatically. 
         driver.maximize_window()
         for i in range(1, searchPage + 1):
             url = "https://www.shutterstock.com/video/search/" + searchTerm + "?page=" + str(i)
@@ -76,7 +77,7 @@ def imagescrape():
     try:
         chrome_options = Options()
         chrome_options.add_argument("--no-sandbox")
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
         driver.maximize_window()
         for i in range(1, searchPage + 1):
             url = "https://www.shutterstock.com/search?searchterm=" + searchTerm + "&sort=popular&image_type=" + image_type + "&search_source=base_landing_page&language=en&page=" + str(i)
