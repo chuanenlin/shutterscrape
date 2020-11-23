@@ -77,11 +77,13 @@ def imagescrape():
     try:
         chrome_options = Options()
         chrome_options.add_argument("--no-sandbox")
-        driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options) #chrome_options is deprecated
         driver.maximize_window()
         for i in range(1, searchPage + 1):
             url = "https://www.shutterstock.com/search?searchterm=" + searchTerm + "&sort=popular&image_type=" + image_type + "&search_source=base_landing_page&language=en&page=" + str(i)
             driver.get(url)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight)") # Scroll to the bottom of the page
+            time.sleep(4)                                                           # Wait 4 seconds for all the images to load
             data = driver.execute_script("return document.documentElement.outerHTML")
             print("Page " + str(i))
             scraper = BeautifulSoup(data, "lxml")
